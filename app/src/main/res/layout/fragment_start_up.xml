@@ -1,157 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StartUpFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/tblPokerCard"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="@+id/rRow2"
-        app:layout_constraintTop_toBottomOf="@+id/rRow2">
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
             android:id="@+id/rRow1"
-            android:layout_width="wrap_content"
-            android:layout_height="120dp"
-            android:gravity="center"
-            app:layout_constraintBottom_toTopOf="@+id/rRow2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.19999999"
-            app:layout_constraintVertical_chainStyle="packed"
-            tools:layout_conversion_absoluteHeight="48dp"
-            tools:layout_conversion_absoluteWidth="411dp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:gravity="center">
 
-            <Button
-                android:id="@+id/btnButton0"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:tag="0"
-                android:text="0" />
+            <ImageView
+                android:id="@+id/imgPoint_1"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="8dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/col_1_01"
+                android:tag="01" />
 
-            <Button
-                android:id="@+id/btnButton1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:tag="1"
-                android:text="1" />
+            <ImageView
+                android:id="@+id/imgPoint_2"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="8dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/col_1_02"
+                android:tag="02" />
 
-            <Button
-                android:id="@+id/btnButton2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:tag="2"
-                android:text="2" />
+
+            <ImageView
+                android:id="@+id/imgPoint_3"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/col_1_03"
+                android:tag="03" />
+
         </TableRow>
 
         <TableRow
             android:id="@+id/rRow2"
-            android:layout_width="wrap_content"
-            android:layout_height="120dp"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            app:layout_constraintBottom_toTopOf="@+id/rRow3"
-            app:layout_constraintStart_toStartOf="@+id/rRow1"
-            app:layout_constraintTop_toBottomOf="@+id/rRow1"
-            tools:layout_conversion_absoluteHeight="48dp"
-            tools:layout_conversion_absoluteWidth="411dp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:gravity="center">
 
-            <Button
-                android:id="@+id/btnButton3"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:tag="3"
-                android:text="3" />
+            <ImageView
+                android:id="@+id/imgPoint_5"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="8dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/col_1_05"
+                android:tag="05" />
 
-            <Button
-                android:id="@+id/btnButton5"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:tag="5"
-                android:text="5" />
+            <ImageView
+                android:id="@+id/imgPoint_8"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="8dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/col_1_08"
+                android:tag="08" />
 
-            <Button
-                android:id="@+id/btnButton8"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:tag="8"
-                android:text="8" />
+
+            <ImageView
+                android:id="@+id/imgPoint_13"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/col_1_13"
+                android:tag="13" />
+
         </TableRow>
 
         <TableRow
             android:id="@+id/rRow3"
-            android:layout_width="wrap_content"
-            android:layout_height="120dp"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            app:layout_constraintBottom_toTopOf="@+id/rRow4"
-            app:layout_constraintStart_toStartOf="@+id/rRow2"
-            app:layout_constraintTop_toBottomOf="@+id/rRow2"
-            tools:layout_conversion_absoluteHeight="48dp"
-            tools:layout_conversion_absoluteWidth="411dp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:gravity="center">
 
-            <Button
-                android:id="@+id/btnButton13"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:tag="13"
-                android:text="13" />
+            <ImageView
+                android:id="@+id/imgPoint_20"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="8dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/col_1_20"
+                android:tag="20" />
 
-            <Button
-                android:id="@+id/btnButton20"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:tag="20"
-                android:text="20" />
+            <ImageView
+                android:id="@+id/imgPoint_40"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="8dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/col_1_40"
+                android:tag="40" />
 
-            <Button
-                android:id="@+id/btnButton40"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:tag="40"
-                android:text="40" />
+
+            <ImageView
+                android:id="@+id/imgPoint_100"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/col_1_100"
+                android:tag="100" />
+
         </TableRow>
 
         <TableRow
             android:id="@+id/rRow4"
-            android:layout_width="wrap_content"
-            android:layout_height="120dp"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/rRow3"
-            app:layout_constraintTop_toBottomOf="@+id/rRow3"
-            tools:layout_conversion_absoluteHeight="48dp"
-            tools:layout_conversion_absoluteWidth="411dp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:gravity="center">
 
-            <Button
-                android:id="@+id/btnButton100"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:tag="100"
-                android:text="100" />
+            <ImageView
+                android:id="@+id/imgPoint_infinity"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="8dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/col_1_infinity"
+                android:tag="infinity" />
 
-            <Button
-                android:id="@+id/btnButtonQuestion"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:tag="-1"
-                android:text="\?" />
+            <ImageView
+                android:id="@+id/imgPoint_Question"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="8dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/col_1_question"
+                android:tag="question" />
 
-            <Button
-                android:id="@+id/btnButtonCoffee"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:tag="-2"
-                android:text="C" />
+            <ImageView
+                android:id="@+id/imgPoint_Shaving"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="8dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/col_1_shaving"
+                android:tag="shaving" />
+
+
         </TableRow>
 
+    </TableLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
