@@ -11,9 +11,6 @@
         android:label="fragment_start_up"
         tools:layout="@layout/fragment_start_up" >
         <action
-            android:id="@+id/action_startUpFragment_to_cardDetailFragment"
-            app:destination="@id/cardDetailFragment" />
-        <action
             android:id="@+id/action_startUpFragment_to_cardScoreFragment"
             app:destination="@id/cardScoreFragment" />
     </fragment>
@@ -21,14 +18,5 @@
         android:id="@+id/cardScoreFragment"
         android:name="com.hhoang.scrumpoker.CardScoreFragment"
         android:label="fragment_card_score"
-        tools:layout="@layout/fragment_card_score" >
-        <action
-            android:id="@+id/action_cardScoreFragment_to_cardDetailFragment"
-            app:destination="@id/cardDetailFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/cardDetailFragment"
-        android:name="com.hhoang.scrumpoker.CardDetailFragment"
-        android:label="fragment_card_detail"
-        tools:layout="@layout/fragment_card_detail" />
+        tools:layout="@layout/fragment_card_score" />
 </navigation>

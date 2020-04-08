@@ -20,3 +20,10 @@
 /.idea/codeStyles/Project.xml
 /.idea/vcs.xml
 /.idea/.name
+/gradle.properties
+/gradle/wrapper/gradle-wrapper.jar
+/gradle/wrapper/gradle-wrapper.properties
+/gradlew
+/gradlew.bat
+/app/proguard-rules.pro
+/settings.gradle
