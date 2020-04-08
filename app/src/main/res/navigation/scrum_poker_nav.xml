@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrum_poker_nav"
+    app:startDestination="@id/startUpFragment">
+
+    <fragment
+        android:id="@+id/startUpFragment"
+        android:name="com.hhoang.scrumpoker.StartUpFragment"
+        android:label="fragment_start_up"
+        tools:layout="@layout/fragment_start_up" >
+        <action
+            android:id="@+id/action_startUpFragment_to_cardDetailFragment"
+            app:destination="@id/cardDetailFragment" />
+        <action
+            android:id="@+id/action_startUpFragment_to_cardScoreFragment"
+            app:destination="@id/cardScoreFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cardScoreFragment"
+        android:name="com.hhoang.scrumpoker.CardScoreFragment"
+        android:label="fragment_card_score"
+        tools:layout="@layout/fragment_card_score" >
+        <action
+            android:id="@+id/action_cardScoreFragment_to_cardDetailFragment"
+            app:destination="@id/cardDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cardDetailFragment"
+        android:name="com.hhoang.scrumpoker.CardDetailFragment"
+        android:label="fragment_card_detail"
+        tools:layout="@layout/fragment_card_detail" />
+</navigation>
