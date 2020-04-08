@@ -18,5 +18,9 @@
         android:id="@+id/cardScoreFragment"
         android:name="com.hhoang.scrumpoker.CardScoreFragment"
         android:label="fragment_card_score"
-        tools:layout="@layout/fragment_card_score" />
+        tools:layout="@layout/fragment_card_score" >
+        <action
+            android:id="@+id/action_cardScoreFragment_to_startUpFragment"
+            app:destination="@id/startUpFragment" />
+    </fragment>
 </navigation>
