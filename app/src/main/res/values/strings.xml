@@ -1,15 +1,16 @@
 <resources>
     <string name="app_name">Scrum Poker</string>
-    <string name="col_1_01">Low hanging fruit</string>
-    <string name="col_1_02">Piece of cake</string>
-    <string name="col_1_03">It ain\'t rocket science</string>
-    <string name="col_1_05">Peanut</string>
-    <string name="col_1_08">An arm and a leg</string>
-    <string name="col_1_13">Squeaking by</string>
-    <string name="col_1_20">Do not put all</string>
-    <string name="col_1_40">Meterse en un berenjenal</string>
-    <string name="col_1_100">Monster task</string>
-    <string name="col_1_question">Here be dragons</string>
-    <string name="col_1_infinity">When pigs fly</string>
-    <string name="col_1_shaving">Yak shaving</string>
+    <string name="basic_01">Low hanging fruit</string>
+    <string name="basic_02">Piece of cake</string>
+    <string name="basic_03">It ain\'t rocket science</string>
+    <string name="basic_05">Peanut</string>
+    <string name="basic_08">An arm and a leg</string>
+    <string name="basic_13">Squeaking by</string>
+    <string name="basic_20">Do not put all</string>
+    <string name="basic_40">Meterse en un berenjenal</string>
+    <string name="basic_100">Monster task</string>
+    <string name="basic_question">Here be dragons</string>
+    <string name="basic_infinity">When pigs fly</string>
+    <string name="basic_shaving">Yak shaving</string>
+    <string name="card_description">Poker Card</string>
 </resources>
