@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Scrum Poker</string>
+    <string name="app_name">Scrum Poker Cards</string>
     <string name="basic_01">Low hanging fruit</string>
     <string name="basic_02">Piece of cake</string>
     <string name="basic_03">It ain\'t rocket science</string>
@@ -13,4 +13,6 @@
     <string name="basic_infinity">When pigs fly</string>
     <string name="basic_shaving">Yak shaving</string>
     <string name="card_description">Poker Card</string>
+    <string name="view_mode_grid">Grid Mode</string>
+    <string name="view_mode_swipe">Swipe Mode</string>
 </resources>

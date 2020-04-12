@@ -14,12 +14,16 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.hhoang.scrumpoker.convertor.ResourceHelper
 import com.hhoang.scrumpoker.model.ScrumPokerViewModel
+import com.hhoang.scrumpoker.model.ViewMode
 
 class CardScoreFragment : Fragment() {
 
-    private val viewModel: ScrumPokerViewModel by activityViewModels()
     private lateinit var mDetector: GestureDetectorCompat
+    private lateinit var imgCardScore: ImageView
+    private lateinit var txtExplanation: TextView
+    private val viewModel: ScrumPokerViewModel by activityViewModels()
     private val action = CardScoreFragmentDirections.actionCardScoreFragmentToStartUpFragment()
+    private val anotherStartAction = CardScoreFragmentDirections.actionCardScoreFragmentToScrollStartFragment()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,13 +31,17 @@ class CardScoreFragment : Fragment() {
     ): View? {
         mDetector = GestureDetectorCompat(context, OnSimpleGestureListenerImp())
         val inflaterView = inflater.inflate(R.layout.fragment_card_score, container, false)
-        setViewTouchEventListener(inflaterView, mDetector)
-        updateCardScore(inflaterView)
+        with(inflaterView) {
+            imgCardScore = findViewById(R.id.imgCardScore)
+            txtExplanation = findViewById(R.id.txtExplanation)
+            updateCardScore(this)
+            setViewTouchEventListener(this, mDetector)
+        }
         return inflaterView
     }
 
     private fun setViewTouchEventListener(inflaterView: View, mDetector: GestureDetectorCompat) {
-        inflaterView.setOnTouchListener { v: View, m: MotionEvent ->
+        inflaterView.setOnTouchListener { _: View, m: MotionEvent ->
             if (mDetector.onTouchEvent(m)) {
                 true
             } else {
@@ -44,20 +52,23 @@ class CardScoreFragment : Fragment() {
 
     private fun updateCardScore(inflaterView: View) {
         val resourceHelper = ResourceHelper(inflaterView.context, viewModel.collector, viewModel.cardScore)
-        val imgCardScore = inflaterView.findViewById(R.id.imgCardScore) as ImageView
         imgCardScore.setImageResource(resourceHelper.drawableResourceId())
-        val txtExplanation = inflaterView.findViewById(R.id.txtExplanation) as TextView
         txtExplanation.text = resourceHelper.literalString()
     }
 
     inner class OnSimpleGestureListenerImp : GestureDetector.SimpleOnGestureListener() {
+
         override fun onDown(e: MotionEvent?): Boolean {
             return true
         }
 
         override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
             if (velocityX > 0) {
-                findNavController().navigate(action)
+                if (viewModel.viewMode.value == ViewMode.GRID) {
+                    findNavController().navigate(action)
+                } else {
+                    findNavController().navigate(anotherStartAction)
+                }
                 return true
             }
             return super.onFling(e1, e2, velocityX, velocityY)

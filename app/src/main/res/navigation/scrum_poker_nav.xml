@@ -7,12 +7,15 @@
 
     <fragment
         android:id="@+id/startUpFragment"
-        android:name="com.hhoang.scrumpoker.StartUpFragment"
+        android:name="com.hhoang.scrumpoker.GridStartFragment"
         android:label="fragment_start_up"
         tools:layout="@layout/fragment_start_up" >
         <action
             android:id="@+id/action_startUpFragment_to_cardScoreFragment"
             app:destination="@id/cardScoreFragment" />
+        <action
+            android:id="@+id/action_startUpFragment_to_scrollStartFragment"
+            app:destination="@id/scrollStartFragment" />
     </fragment>
     <fragment
         android:id="@+id/cardScoreFragment"
@@ -21,6 +24,21 @@
         tools:layout="@layout/fragment_card_score" >
         <action
             android:id="@+id/action_cardScoreFragment_to_startUpFragment"
+            app:destination="@id/startUpFragment" />
+        <action
+            android:id="@+id/action_cardScoreFragment_to_scrollStartFragment"
+            app:destination="@id/scrollStartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scrollStartFragment"
+        android:name="com.hhoang.scrumpoker.SwipeStartFragment"
+        android:label="fragment_blank"
+        tools:layout="@layout/fragment_swipe_start" >
+        <action
+            android:id="@+id/action_scrollStartFragment_to_cardScoreFragment"
+            app:destination="@id/cardScoreFragment" />
+        <action
+            android:id="@+id/action_scrollStartFragment_to_startUpFragment"
             app:destination="@id/startUpFragment" />
     </fragment>
 </navigation>
