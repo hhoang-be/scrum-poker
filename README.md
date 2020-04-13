@@ -1,2 +1,4 @@
 # scrum-poker
-Scrum Poker Android App
+Scrum Sizing Android App
+
+Disclaimer: I am not an artist hence the UI looks shameful :/
