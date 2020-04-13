@@ -12,8 +12,9 @@ import androidx.core.view.GestureDetectorCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.hhoang.scrumpoker.convertor.ResourceHelper
+import com.hhoang.scrumpoker.helpers.ResourceHelper
 import com.hhoang.scrumpoker.model.ScrumPokerViewModel
+import com.hhoang.scrumpoker.model.SizingMode
 import com.hhoang.scrumpoker.model.ViewMode
 
 class CardScoreFragment : Fragment() {
@@ -22,8 +23,10 @@ class CardScoreFragment : Fragment() {
     private lateinit var imgCardScore: ImageView
     private lateinit var txtExplanation: TextView
     private val viewModel: ScrumPokerViewModel by activityViewModels()
-    private val action = CardScoreFragmentDirections.actionCardScoreFragmentToStartUpFragment()
-    private val anotherStartAction = CardScoreFragmentDirections.actionCardScoreFragmentToScrollStartFragment()
+    private val actionPokerGridStart = CardScoreFragmentDirections.actionCardScoreFragmentToStartUpFragment()
+    private val actionTshirtGridStart = CardScoreFragmentDirections.actionCardScoreFragmentToGridTshirtStartFragment()
+    private val actionSwipeStart = CardScoreFragmentDirections.actionCardScoreFragmentToScrollStartFragment()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,8 +37,10 @@ class CardScoreFragment : Fragment() {
         with(inflaterView) {
             imgCardScore = findViewById(R.id.imgCardScore)
             txtExplanation = findViewById(R.id.txtExplanation)
-            updateCardScore(this)
-            setViewTouchEventListener(this, mDetector)
+        }
+        inflaterView.let {
+            updateCardScore(it)
+            setViewTouchEventListener(it, mDetector)
         }
         return inflaterView
     }
@@ -51,7 +56,7 @@ class CardScoreFragment : Fragment() {
     }
 
     private fun updateCardScore(inflaterView: View) {
-        val resourceHelper = ResourceHelper(inflaterView.context, viewModel.collector, viewModel.cardScore)
+        val resourceHelper = ResourceHelper(inflaterView.context, viewModel.sizingMode.value, viewModel.cardScore)
         imgCardScore.setImageResource(resourceHelper.drawableResourceId())
         txtExplanation.text = resourceHelper.literalString()
     }
@@ -64,10 +69,12 @@ class CardScoreFragment : Fragment() {
 
         override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
             if (velocityX > 0) {
-                if (viewModel.viewMode.value == ViewMode.GRID) {
-                    findNavController().navigate(action)
-                } else {
-                    findNavController().navigate(anotherStartAction)
+                if (viewModel.viewMode.value == ViewMode.GRID && viewModel.sizingMode.value == SizingMode.POKER_CARD) {
+                    findNavController().navigate(actionPokerGridStart)
+                } else if (viewModel.viewMode.value == ViewMode.GRID && viewModel.sizingMode.value == SizingMode.T_SHIRT) {
+                    findNavController().navigate(actionTshirtGridStart)
+                } else if (viewModel.viewMode.value == ViewMode.SWIPE) {
+                    findNavController().navigate(actionSwipeStart)
                 }
                 return true
             }

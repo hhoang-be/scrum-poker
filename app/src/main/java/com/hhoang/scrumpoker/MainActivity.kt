@@ -9,6 +9,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.hhoang.scrumpoker.model.ScrumPokerViewModel
+import com.hhoang.scrumpoker.model.SizingMode
 import com.hhoang.scrumpoker.model.ViewMode
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -39,7 +40,9 @@ class MainActivity : AppCompatActivity() {
         drawerLayout.closeDrawer(GravityCompat.START)
         when (menuItem.itemId) {
             R.id.miGridView -> viewModel.setViewMode(ViewMode.GRID)
-            R.id.miScrollView -> viewModel.setViewMode(ViewMode.SCROLL)
+            R.id.miScrollView -> viewModel.setViewMode(ViewMode.SWIPE)
+            R.id.miPokerCard -> viewModel.setSizingMode(SizingMode.POKER_CARD)
+            R.id.miTshirtCard -> viewModel.setSizingMode(SizingMode.T_SHIRT)
         }
         return true
     }
