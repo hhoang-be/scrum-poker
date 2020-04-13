@@ -19,8 +19,11 @@
     <string name="tshirt_xl">Extra Large</string>
     <string name="tshirt_xxl">Double Extra Large</string>
     <string name="card_description">Poker Card</string>
-    <string name="view_mode_grid">Grid View</string>
-    <string name="view_mode_swipe">Swipe Card</string>
+    <string name="dark_theme_menu">Dark Theme</string>
+    <string name="view_mode_menu">Card Layout</string>
+    <string name="view_mode_grid">Grid</string>
+    <string name="view_mode_swipe">Swipe</string>
+    <string name="sizing_mode_menu">Sizing Mode</string>
     <string name="poker_card_sizing">Poker Sizing</string>
     <string name="tshirt_card_sizing">T-Shirt Sizing</string>
 </resources>

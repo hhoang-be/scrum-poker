@@ -5,4 +5,6 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="cardBorderColour">#000000</color>
     <color name="cardExplanationFontColour">#000000</color>
+    <color name="colorDarkMode">#454545</color>
+    <color name="colorLightMode">#F0F0F0</color>
 </resources>
