@@ -7,10 +7,12 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TableLayout
 import android.widget.TextView
 import androidx.core.view.GestureDetectorCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.hhoang.scrumpoker.helpers.ResourceHelper
 import com.hhoang.scrumpoker.model.ScrumPokerViewModel
@@ -42,6 +44,7 @@ class CardScoreFragment : Fragment() {
             updateCardScore(it)
             setViewTouchEventListener(it, mDetector)
         }
+        setOnDarkModeSwitchChanged()
         return inflaterView
     }
 
@@ -60,6 +63,17 @@ class CardScoreFragment : Fragment() {
         imgCardScore.setImageResource(resourceHelper.drawableResourceId())
         txtExplanation.text = resourceHelper.literalString()
     }
+
+    private fun setOnDarkModeSwitchChanged() {
+        viewModel.darkThemeMode.observe(viewLifecycleOwner, Observer { darkMode ->
+            if (darkMode == true) {
+                txtExplanation.setTextColor(resources.getColor(R.color.colorLightMode, null))
+            } else {
+                txtExplanation.setTextColor(resources.getColor(R.color.colorDarkMode, null))
+            }
+        })
+    }
+
 
     inner class OnSimpleGestureListenerImp : GestureDetector.SimpleOnGestureListener() {
 

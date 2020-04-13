@@ -1,20 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/miGridView"
-        android:title="@string/view_mode_grid" />
+        android:id="@+id/miDarkTheme"
+        android:title="@string/dark_theme_menu"
+        app:actionLayout="@layout/switch_item"
+        app:showAsAction="always" />
     <item
-        android:id="@+id/miScrollView"
-        android:title="@string/view_mode_swipe" />
-    <group >
-        <item
-            android:id="@+id/miPokerCard"
-            android:title="@string/poker_card_sizing" />
-        <item
-            android:id="@+id/miTshirtCard"
-            android:title="@string/tshirt_card_sizing" />
-    </group>
-
+        android:id="@+id/miSizingMode"
+        android:title="@string/sizing_mode_menu">
+        <menu>
+            <item
+                android:id="@+id/miScrollView"
+                android:title="@string/view_mode_swipe" />
+            <item
+                android:id="@+id/miGridView"
+                android:title="@string/view_mode_grid" />
+        </menu>
+    </item>
+    <item
+        android:id="@+id/miLayoutMode"
+        android:title="@string/view_mode_menu">
+        <menu>
+            <item
+                android:id="@+id/miPokerCard"
+                android:title="@string/poker_card_sizing" />
+            <item
+                android:id="@+id/miTshirtCard"
+                android:title="@string/tshirt_card_sizing" />
+        </menu>
+    </item>
 
 </menu>
