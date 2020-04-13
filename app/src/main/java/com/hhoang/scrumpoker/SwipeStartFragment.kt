@@ -1,31 +1,33 @@
 package com.hhoang.scrumpoker
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.hhoang.scrumpoker.convertor.ResourceHelper
+import com.hhoang.scrumpoker.adapters.CardGridAdapter
 import com.hhoang.scrumpoker.layoutmanager.CenterZoomedLayoutManager
 import com.hhoang.scrumpoker.model.CardScore
 import com.hhoang.scrumpoker.model.ScrumPokerViewModel
+import com.hhoang.scrumpoker.model.SizingMode
 import com.hhoang.scrumpoker.model.ViewMode
 
 
-class SwipeStartFragment : Fragment() {
+class SwipeStartFragment : Fragment(), DrawerNavigable {
 
     private lateinit var inflaterView: View
     private var cardScores = initPokerCards()
     private val viewModel: ScrumPokerViewModel by activityViewModels()
-    private val actionBack = SwipeStartFragmentDirections.actionScrollStartFragmentToCardScoreFragment()
-    private val actionStartUp = SwipeStartFragmentDirections.actionScrollStartFragmentToStartUpFragment()
+    private val actionScore = SwipeStartFragmentDirections.actionScrollStartFragmentToCardScoreFragment()
+    private val actionPokerGridStart = SwipeStartFragmentDirections.actionScrollStartFragmentToStartUpFragment()
+    private val actionTshirtGridStart =
+        SwipeStartFragmentDirections.actionScrollStartFragmentToGridTshirtStartFragment()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +38,7 @@ class SwipeStartFragment : Fragment() {
         recycleView.let {
             initLayoutManager(it)
             initAdapter(it)
-        }.also { setOnViewModeChanged() }
+        }.also { setOnViewModeChanged() }.also { setOnSizingModeChanged() }
         return inflaterView
     }
 
@@ -47,20 +49,42 @@ class SwipeStartFragment : Fragment() {
     }
 
     private fun initAdapter(recycleView: RecyclerView) {
-        val adapter = CardScoreAdapter(cardScores, viewModel)
+        val adapter = CardGridAdapter(cardScores, viewModel)
         recycleView.adapter = adapter
         val snapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(recycleView)
         adapter.itemOnClick = { _: View, cs: CardScore ->
             viewModel.cardScore = cs.cardTag
-            findNavController().navigate(actionBack)
+            findNavController().navigate(actionScore)
         }
     }
 
-    private fun setOnViewModeChanged() {
+    override fun setOnViewModeChanged() {
         viewModel.viewMode.observe(viewLifecycleOwner, Observer { viewMode ->
-            if (viewMode == ViewMode.GRID) {
-                findNavController().navigate(actionStartUp)
+            if (viewMode == ViewMode.GRID && viewModel.sizingMode.value == SizingMode.POKER_CARD) {
+                findNavController().navigate(actionPokerGridStart)
+            } else if (viewMode == ViewMode.GRID && viewModel.sizingMode.value == SizingMode.T_SHIRT) {
+                findNavController().navigate(actionTshirtGridStart)
+            }
+        })
+    }
+
+    override fun setOnSizingModeChanged() {
+        viewModel.sizingMode.observe(viewLifecycleOwner, Observer { sizingMode ->
+            if (viewModel.viewMode.value == ViewMode.GRID && sizingMode == SizingMode.POKER_CARD) {
+                findNavController().navigate(actionPokerGridStart)
+            } else if (viewModel.viewMode.value == ViewMode.GRID && sizingMode == SizingMode.T_SHIRT) {
+                findNavController().navigate(actionTshirtGridStart)
+            } else if (viewModel.viewMode.value == ViewMode.SWIPE) {
+                cardScores.clear()
+                cardScores.addAll(
+                    if (sizingMode == SizingMode.POKER_CARD) {
+                        initPokerCards()
+                    } else {
+                        initTshirtCards()
+                    }
+                )
+                inflaterView.findViewById<RecyclerView>(R.id.my_recycler_view).adapter?.notifyDataSetChanged()
             }
         })
     }
@@ -84,34 +108,16 @@ class SwipeStartFragment : Fragment() {
         )
     }
 
-    class CardScoreAdapter(private var cardScores: MutableList<CardScore>, private val viewModel: ScrumPokerViewModel) :
-        RecyclerView.Adapter<CardScoreAdapter.CardViewHolder>() {
-
-        lateinit var context: Context
-        lateinit var itemOnClick: (View, CardScore) -> Unit
-
-        class CardViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            var imageView: ImageView = view.findViewById(R.id.itemImageView)
-        }
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
-            context = parent.context
-            val inflaterView = LayoutInflater.from(context)
-            val itemView = inflaterView.inflate(R.layout.card_item_view, parent, false)
-            return CardViewHolder(itemView)
-        }
-
-        override fun getItemCount(): Int {
-            return cardScores.size
-        }
-
-        override fun onBindViewHolder(cardHolder: CardViewHolder, position: Int) {
-            val cardScore = cardScores[position]
-            val rh = ResourceHelper(context, viewModel.collector, cardScore.cardTag)
-            cardHolder.imageView.setImageResource(rh.drawableResourceId())
-            if (position != 0 && position != cardScores.size - 1) {
-                cardHolder.imageView.setOnClickListener { v -> itemOnClick(v, cardScore) }
-            }
-        }
+    private fun initTshirtCards(): MutableList<CardScore> {
+        return mutableListOf(
+            CardScore("blank"),
+            CardScore("xs"),
+            CardScore("s"),
+            CardScore("m"),
+            CardScore("l"),
+            CardScore("xl"),
+            CardScore("xxl"),
+            CardScore("blank")
+        )
     }
 }

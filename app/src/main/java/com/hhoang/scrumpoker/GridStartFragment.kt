@@ -10,14 +10,16 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.hhoang.scrumpoker.model.ScrumPokerViewModel
+import com.hhoang.scrumpoker.model.SizingMode
 import com.hhoang.scrumpoker.model.ViewMode
 
-class GridStartFragment : Fragment(), View.OnClickListener {
+class GridStartFragment : Fragment(), View.OnClickListener, DrawerNavigable {
 
     private var inflaterView: View? = null
     private val viewModel: ScrumPokerViewModel by activityViewModels()
-    private val actionBack = GridStartFragmentDirections.actionStartUpFragmentToCardScoreFragment()
-    private val actionScrollStart = GridStartFragmentDirections.actionStartUpFragmentToScrollStartFragment()
+    private val actionScore = GridStartFragmentDirections.actionStartUpFragmentToCardScoreFragment()
+    private val actionPokerSwipeStart = GridStartFragmentDirections.actionStartUpFragmentToScrollStartFragment()
+    private val actionTshirtGridStart = GridStartFragmentDirections.actionStartUpFragmentToGridTshirtStartFragment()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,14 +39,22 @@ class GridStartFragment : Fragment(), View.OnClickListener {
             it?.findViewById<ImageView>(R.id.imgPoint_infinity)?.setOnClickListener(this)
             it?.findViewById<ImageView>(R.id.imgPoint_Question)?.setOnClickListener(this)
             it?.findViewById<ImageView>(R.id.imgPoint_Shaving)?.setOnClickListener(this)
-        }.also { setOnViewModeChanged() }
+        }.also { setOnViewModeChanged() }.also { setOnSizingModeChanged() }
         return this.inflaterView
     }
 
-    private fun setOnViewModeChanged() {
+    override fun setOnViewModeChanged() {
         viewModel.viewMode.observe(viewLifecycleOwner, Observer { viewMode ->
-            if (viewMode == ViewMode.SCROLL) {
-                findNavController().navigate(actionScrollStart)
+            if (viewMode == ViewMode.SWIPE) {
+                findNavController().navigate(actionPokerSwipeStart)
+            }
+        })
+    }
+
+    override fun setOnSizingModeChanged() {
+        viewModel.sizingMode.observe(viewLifecycleOwner, Observer { sizingMode ->
+            if (sizingMode == SizingMode.T_SHIRT) {
+                findNavController().navigate(actionTshirtGridStart)
             }
         })
     }
@@ -52,6 +62,6 @@ class GridStartFragment : Fragment(), View.OnClickListener {
     override fun onClick(view: View?) {
         val imageView = view as ImageView
         viewModel.cardScore = imageView.tag.toString()
-        findNavController().navigate(actionBack)
+        findNavController().navigate(actionScore)
     }
 }

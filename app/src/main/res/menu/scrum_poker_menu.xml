@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group>
+    <item
+        android:id="@+id/miGridView"
+        android:title="@string/view_mode_grid" />
+    <item
+        android:id="@+id/miScrollView"
+        android:title="@string/view_mode_swipe" />
+    <group >
         <item
-            android:id="@+id/miGridView"
-            android:title="@string/view_mode_grid" />
+            android:id="@+id/miPokerCard"
+            android:title="@string/poker_card_sizing" />
         <item
-            android:id="@+id/miScrollView"
-            android:title="@string/view_mode_swipe" />
+            android:id="@+id/miTshirtCard"
+            android:title="@string/tshirt_card_sizing" />
     </group>
 
 

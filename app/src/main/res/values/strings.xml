@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Scrum Poker Cards</string>
+    <string name="app_name">Scrum Sizing Tool</string>
     <string name="basic_01">Low hanging fruit</string>
     <string name="basic_02">Piece of cake</string>
     <string name="basic_03">It ain\'t rocket science</string>
@@ -12,7 +12,15 @@
     <string name="basic_question">Here be dragons</string>
     <string name="basic_infinity">When pigs fly</string>
     <string name="basic_shaving">Yak shaving</string>
+    <string name="tshirt_xs">Extra Small</string>
+    <string name="tshirt_s">Small</string>
+    <string name="tshirt_m">Medium</string>
+    <string name="tshirt_l">Large</string>
+    <string name="tshirt_xl">Extra Large</string>
+    <string name="tshirt_xxl">Double Extra Large</string>
     <string name="card_description">Poker Card</string>
-    <string name="view_mode_grid">Grid Mode</string>
-    <string name="view_mode_swipe">Swipe Mode</string>
+    <string name="view_mode_grid">Grid View</string>
+    <string name="view_mode_swipe">Swipe Card</string>
+    <string name="poker_card_sizing">Poker Sizing</string>
+    <string name="tshirt_card_sizing">T-Shirt Sizing</string>
 </resources>

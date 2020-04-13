@@ -1,11 +1,12 @@
-package com.hhoang.scrumpoker.convertor
+package com.hhoang.scrumpoker.helpers
 
 import android.content.Context
+import com.hhoang.scrumpoker.model.SizingMode
 
 
-class ResourceHelper(private val context: Context, collector: String, score: String) {
+class ResourceHelper(private val context: Context, sizingMode: SizingMode?, score: String) {
 
-    private val qualifiedName = collector + "_" + score
+    private val qualifiedName = sizingMode?.drawablePrefix + "_" + score
 
     fun drawableResourceId(): Int {
         return context.resources.getIdentifier(qualifiedName, "drawable", context.packageName)

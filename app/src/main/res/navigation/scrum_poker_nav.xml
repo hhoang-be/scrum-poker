@@ -14,6 +14,9 @@
             android:id="@+id/action_startUpFragment_to_cardScoreFragment"
             app:destination="@id/cardScoreFragment" />
         <action
+            android:id="@+id/action_startUpFragment_to_gridTshirtStartFragment"
+            app:destination="@id/gridTshirtStartFragment" />
+        <action
             android:id="@+id/action_startUpFragment_to_scrollStartFragment"
             app:destination="@id/scrollStartFragment" />
     </fragment>
@@ -28,6 +31,9 @@
         <action
             android:id="@+id/action_cardScoreFragment_to_scrollStartFragment"
             app:destination="@id/scrollStartFragment" />
+        <action
+            android:id="@+id/action_cardScoreFragment_to_gridTshirtStartFragment"
+            app:destination="@id/gridTshirtStartFragment" />
     </fragment>
     <fragment
         android:id="@+id/scrollStartFragment"
@@ -40,5 +46,23 @@
         <action
             android:id="@+id/action_scrollStartFragment_to_startUpFragment"
             app:destination="@id/startUpFragment" />
+        <action
+            android:id="@+id/action_scrollStartFragment_to_gridTshirtStartFragment"
+            app:destination="@id/gridTshirtStartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gridTshirtStartFragment"
+        android:name="com.hhoang.scrumpoker.GridTshirtStartFragment"
+        android:label="fragment_grid_tshirt_start"
+        tools:layout="@layout/fragment_grid_tshirt_start" >
+        <action
+            android:id="@+id/action_gridTshirtStartFragment_to_cardScoreFragment"
+            app:destination="@id/cardScoreFragment" />
+        <action
+            android:id="@+id/action_gridTshirtStartFragment_to_startUpFragment"
+            app:destination="@id/startUpFragment" />
+        <action
+            android:id="@+id/action_gridTshirtStartFragment_to_scrollStartFragment"
+            app:destination="@id/scrollStartFragment" />
     </fragment>
 </navigation>
