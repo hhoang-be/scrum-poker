@@ -27,6 +27,7 @@
                 android:title="@string/poker_card_sizing" />
             <item
                 android:id="@+id/miTshirtCard"
+                android:enabled="false"
                 android:title="@string/tshirt_card_sizing" />
         </menu>
     </item>
