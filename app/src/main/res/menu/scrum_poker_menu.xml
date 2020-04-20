@@ -7,8 +7,8 @@
         app:actionLayout="@layout/switch_item"
         app:showAsAction="always" />
     <item
-        android:id="@+id/miSizingMode"
-        android:title="@string/sizing_mode_menu">
+        android:id="@+id/miLayoutMode"
+        android:title="@string/view_mode_menu">
         <menu>
             <item
                 android:id="@+id/miScrollView"
@@ -19,8 +19,8 @@
         </menu>
     </item>
     <item
-        android:id="@+id/miLayoutMode"
-        android:title="@string/view_mode_menu">
+        android:id="@+id/miSizingMode"
+        android:title="@string/sizing_mode_menu">
         <menu>
             <item
                 android:id="@+id/miPokerCard"
