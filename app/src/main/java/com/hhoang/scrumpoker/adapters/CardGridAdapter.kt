@@ -10,7 +10,11 @@ import com.hhoang.scrumpoker.helpers.ResourceHelper
 import com.hhoang.scrumpoker.model.CardScore
 import com.hhoang.scrumpoker.model.ScrumPokerViewModel
 
-class CardGridAdapter(private var cardScores: MutableList<CardScore>, private val viewModel: ScrumPokerViewModel) :
+class CardGridAdapter(
+    private var cardScores: MutableList<CardScore>,
+    private val viewModel: ScrumPokerViewModel,
+    private val itemLayout: Int = R.layout.card_item_view
+) :
     RecyclerView.Adapter<CardViewHolder>() {
 
     lateinit var context: Context
@@ -19,7 +23,7 @@ class CardGridAdapter(private var cardScores: MutableList<CardScore>, private va
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         context = parent.context
         val inflaterView = LayoutInflater.from(context)
-        val itemView = inflaterView.inflate(R.layout.card_item_view, parent, false)
+        val itemView = inflaterView.inflate(itemLayout, parent, false)
         return CardViewHolder(itemView)
     }
 
