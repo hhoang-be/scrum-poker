@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
-        navigationView.setNavigationItemSelectedListener { m -> navigationItemSelected(m) }
+        navigationView.setNavigationItemSelectedListener { navigationItemSelected(it) }
         darkThemSwichChanged(navigationView)
         viewModel = lazyViewModel.value
     }
@@ -50,7 +50,6 @@ class MainActivity : AppCompatActivity() {
                 findViewById<ConstraintLayout>(R.id.mainActivityLayout).setBackgroundResource(R.color.colorLightMode)
             }
         }
-
     }
 
     private fun navigationItemSelected(menuItem: MenuItem): Boolean {

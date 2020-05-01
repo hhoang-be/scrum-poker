@@ -3,7 +3,7 @@ package com.hhoang.scrumpoker.model
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-internal class ScrumPokerViewModelTest {
+class ScrumPokerViewModelTest {
 
     @Test
     fun initialState() {

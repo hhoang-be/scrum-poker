@@ -17,6 +17,7 @@ import com.hhoang.scrumpoker.model.ScrumPokerViewModel
 import com.hhoang.scrumpoker.model.SizingMode
 import com.hhoang.scrumpoker.model.ViewMode
 
+private const val INITIAL_POSITION: Int = 3
 
 class SwipeStartFragment : Fragment(), DrawerNavigable {
 
@@ -28,13 +29,12 @@ class SwipeStartFragment : Fragment(), DrawerNavigable {
     private val actionTshirtGridStart =
         SwipeStartFragmentDirections.actionScrollStartFragmentToGridTshirtStartFragment()
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         inflaterView = inflater.inflate(R.layout.fragment_swipe_start, container, false)
-        val recycleView = inflaterView.findViewById<RecyclerView>(R.id.my_recycler_view)
+        val recycleView = inflaterView.findViewById<RecyclerView>(R.id.swipeRecycleView)
         recycleView.let {
             initLayoutManager(it)
             initAdapter(it)
@@ -45,7 +45,7 @@ class SwipeStartFragment : Fragment(), DrawerNavigable {
     private fun initLayoutManager(recycleView: RecyclerView) {
         val layoutManager = CenterZoomedLayoutManager(inflaterView.context)
         recycleView.layoutManager = layoutManager
-        recycleView.smoothScrollToPosition(5)
+        recycleView.smoothScrollToPosition(INITIAL_POSITION)
     }
 
     private fun initAdapter(recycleView: RecyclerView) {
@@ -84,7 +84,7 @@ class SwipeStartFragment : Fragment(), DrawerNavigable {
                         initTshirtCards()
                     }
                 )
-                inflaterView.findViewById<RecyclerView>(R.id.my_recycler_view).adapter?.notifyDataSetChanged()
+                inflaterView.findViewById<RecyclerView>(R.id.swipeRecycleView).adapter?.notifyDataSetChanged()
             }
         })
     }
