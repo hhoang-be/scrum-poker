@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.hhoang.scrumpoker.adapters.CardGridAdapter
+import com.hhoang.scrumpoker.helpers.CardUtils
 import com.hhoang.scrumpoker.layoutmanager.CenterZoomedLayoutManager
 import com.hhoang.scrumpoker.model.CardScore
 import com.hhoang.scrumpoker.model.ScrumPokerViewModel
@@ -19,10 +19,9 @@ import com.hhoang.scrumpoker.model.ViewMode
 
 private const val INITIAL_POSITION: Int = 3
 
-class SwipeStartFragment : Fragment(), DrawerNavigable {
+class SwipeStartFragment : BaseFragment() {
 
-    private lateinit var inflaterView: View
-    private var cardScores = initPokerCards()
+    private var cardScores = CardUtils.initPokerCards()
     private val viewModel: ScrumPokerViewModel by activityViewModels()
     private val actionScore = SwipeStartFragmentDirections.actionScrollStartFragmentToCardScoreFragment()
     private val actionPokerGridStart = SwipeStartFragmentDirections.actionScrollStartFragmentToStartUpFragment()
@@ -70,54 +69,24 @@ class SwipeStartFragment : Fragment(), DrawerNavigable {
     }
 
     override fun setOnSizingModeChanged() {
-        viewModel.sizingMode.observe(viewLifecycleOwner, Observer { sizingMode ->
-            if (viewModel.viewMode.value == ViewMode.GRID && sizingMode == SizingMode.POKER_CARD) {
-                findNavController().navigate(actionPokerGridStart)
-            } else if (viewModel.viewMode.value == ViewMode.GRID && sizingMode == SizingMode.T_SHIRT) {
-                findNavController().navigate(actionTshirtGridStart)
-            } else if (viewModel.viewMode.value == ViewMode.SWIPE) {
-                cardScores.clear()
-                cardScores.addAll(
-                    if (sizingMode == SizingMode.POKER_CARD) {
-                        initPokerCards()
-                    } else {
-                        initTshirtCards()
-                    }
-                )
-                inflaterView.findViewById<RecyclerView>(R.id.swipeRecycleView).adapter?.notifyDataSetChanged()
+        viewModel.sizingMode.observe(viewLifecycleOwner, Observer { sm ->
+            if (findNavController().currentDestination?.id == R.id.scrollStartFragment) {
+                if (viewModel.viewMode.value == ViewMode.GRID && sm == SizingMode.POKER_CARD) {
+                    findNavController().navigate(actionPokerGridStart)
+                } else if (viewModel.viewMode.value == ViewMode.GRID && sm == SizingMode.T_SHIRT) {
+                    findNavController().navigate(actionTshirtGridStart)
+                } else if (viewModel.viewMode.value == ViewMode.SWIPE) {
+                    cardScores.clear()
+                    cardScores.addAll(
+                        if (sm == SizingMode.POKER_CARD) {
+                            CardUtils.initPokerCards()
+                        } else {
+                            CardUtils.initTshirtCards()
+                        }
+                    )
+                    inflaterView.findViewById<RecyclerView>(R.id.swipeRecycleView).adapter?.notifyDataSetChanged()
+                }
             }
         })
-    }
-
-    private fun initPokerCards(): MutableList<CardScore> {
-        return mutableListOf(
-            CardScore("blank"),
-            CardScore("01"),
-            CardScore("02"),
-            CardScore("03"),
-            CardScore("05"),
-            CardScore("08"),
-            CardScore("13"),
-            CardScore("20"),
-            CardScore("40"),
-            CardScore("100"),
-            CardScore("infinity"),
-            CardScore("question"),
-            CardScore("shaving"),
-            CardScore("blank")
-        )
-    }
-
-    private fun initTshirtCards(): MutableList<CardScore> {
-        return mutableListOf(
-            CardScore("blank"),
-            CardScore("xs"),
-            CardScore("s"),
-            CardScore("m"),
-            CardScore("l"),
-            CardScore("xl"),
-            CardScore("xxl"),
-            CardScore("blank")
-        )
     }
 }

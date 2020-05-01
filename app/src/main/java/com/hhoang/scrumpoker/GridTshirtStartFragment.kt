@@ -1,11 +1,9 @@
 package com.hhoang.scrumpoker
 
-import android.graphics.Rect
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -19,9 +17,8 @@ import com.hhoang.scrumpoker.model.ScrumPokerViewModel
 import com.hhoang.scrumpoker.model.SizingMode
 import com.hhoang.scrumpoker.model.ViewMode
 
-class GridTshirtStartFragment : Fragment(), DrawerNavigable {
+class GridTshirtStartFragment : BaseFragment() {
 
-    private lateinit var inflaterView: View
     private var cardScores = initTshirtCards()
     private val viewModel: ScrumPokerViewModel by activityViewModels()
     private val actionScore = GridTshirtStartFragmentDirections.actionGridTshirtStartFragmentToCardScoreFragment()

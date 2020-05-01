@@ -14,7 +14,7 @@ import org.junit.Rule
 private const val BASIC_SAMPLE_PACKAGE = "com.hhoang.scrumpoker"
 private const val LAUNCH_TIMEOUT = 5000L
 
-open class TestBase {
+internal open class TestBase {
 
     private lateinit var device: UiDevice
 

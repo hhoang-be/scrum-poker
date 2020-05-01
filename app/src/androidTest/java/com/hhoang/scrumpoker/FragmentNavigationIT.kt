@@ -14,7 +14,7 @@ import org.junit.runner.RunWith
 
 
 @RunWith(AndroidJUnit4::class)
-class FragmentNavigationIT: TestBase() {
+internal class FragmentNavigationIT: TestBase() {
 
     @Test
     fun layoutModeNavigation() {
@@ -41,7 +41,7 @@ class FragmentNavigationIT: TestBase() {
     private fun clickOnNavigationMenu(menuId: Int) {
         onView(withId(R.id.drawer_layout))
             .check(matches(DrawerMatchers.isClosed(Gravity.LEFT)))
-            .perform(DrawerActions.open());
+            .perform(DrawerActions.open())
 
         onView(withId(R.id.nav_view))
             .perform(NavigationViewActions.navigateTo(menuId))
