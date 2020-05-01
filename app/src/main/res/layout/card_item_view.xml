@@ -6,12 +6,15 @@
 
     <ImageView
         android:id="@+id/itemImageView"
-        android:layout_width="150dp"
+        android:layout_width="170dp"
         android:layout_height="250dp"
+        android:padding="2dp"
+        android:scaleType="centerInside"
+        android:background="@drawable/image_border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/tshirt_l" />
+        app:srcCompat="@drawable/tshirt_l"
 </androidx.constraintlayout.widget.ConstraintLayout>

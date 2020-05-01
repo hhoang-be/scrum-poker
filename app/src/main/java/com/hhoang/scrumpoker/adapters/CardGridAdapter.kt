@@ -1,6 +1,7 @@
 package com.hhoang.scrumpoker.adapters
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,7 +37,10 @@ class CardGridAdapter(
         val rh = ResourceHelper(context, viewModel.sizingMode.value, cardScore.cardTag)
         cardHolder.imageView.setImageResource(rh.drawableResourceId())
         if (cardScore.cardTag != "blank") {
+            cardHolder.imageView.setBackgroundResource(R.drawable.image_border)
             cardHolder.imageView.setOnClickListener { v -> itemOnClick(v, cardScore) }
+        } else {
+            cardHolder.imageView.setBackgroundColor(Color.TRANSPARENT)
         }
     }
 }
