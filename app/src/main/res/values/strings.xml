@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Scrum Sizing Tool</string>
+    <string name="app_name">Agile Planning Tool</string>
     <string name="basic_01">Low hanging fruit</string>
     <string name="basic_02">Piece of cake</string>
     <string name="basic_03">It ain\'t rocket science</string>
@@ -19,11 +19,11 @@
     <string name="tshirt_xl">Extra Large</string>
     <string name="tshirt_xxl">Double Extra Large</string>
     <string name="card_description">Poker Card</string>
-    <string name="dark_theme_menu">Dark Theme</string>
+    <string name="dark_theme_menu">Dark Mode</string>
     <string name="view_mode_menu">Card Layout</string>
     <string name="view_mode_grid">Grid</string>
     <string name="view_mode_swipe">Swipe</string>
-    <string name="sizing_mode_menu">Sizing Mode</string>
-    <string name="poker_card_sizing">Poker Sizing</string>
-    <string name="tshirt_card_sizing">T-Shirt Sizing</string>
+    <string name="sizing_mode_menu">Planning Scheme</string>
+    <string name="poker_card_sizing">Poker Card</string>
+    <string name="tshirt_card_sizing">T-Shirt Size</string>
 </resources>
