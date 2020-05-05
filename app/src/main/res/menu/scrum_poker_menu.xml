@@ -7,20 +7,6 @@
         app:actionLayout="@layout/switch_item"
         app:showAsAction="always" />
     <item
-        android:id="@+id/miSizingMode"
-        android:title="@string/sizing_mode_menu">
-        <menu>
-            <item
-                android:id="@+id/miPokerCard"
-                android:icon="@drawable/poker_icon"
-                android:title="@string/poker_card_sizing" />
-            <item
-                android:id="@+id/miTshirtCard"
-                android:icon="@drawable/tshirt_icon"
-                android:title="@string/tshirt_card_sizing" />
-        </menu>
-    </item>
-    <item
         android:id="@+id/miLayoutMode"
         android:title="@string/view_mode_menu">
         <menu>
@@ -32,6 +18,20 @@
                 android:id="@+id/miScrollView"
                 android:icon="@drawable/carousel_view_icon"
                 android:title="@string/view_mode_swipe" />
+        </menu>
+    </item>
+    <item
+        android:id="@+id/miSizingMode"
+        android:title="@string/sizing_mode_menu">
+        <menu>
+            <item
+                android:id="@+id/miPokerCard"
+                android:icon="@drawable/poker_icon"
+                android:title="@string/poker_card_sizing" />
+            <item
+                android:id="@+id/miTshirtCard"
+                android:icon="@drawable/tshirt_icon"
+                android:title="@string/tshirt_card_sizing" />
         </menu>
     </item>
 </menu>
