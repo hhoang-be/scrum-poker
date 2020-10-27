@@ -34,11 +34,11 @@ class MainActivity : AppCompatActivity() {
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         navigationView.setNavigationItemSelectedListener { navigationItemSelected(it) }
-        darkThemSwichChanged(navigationView)
+        darkThemSwitchChanged(navigationView)
         viewModel = lazyViewModel.value
     }
 
-    private fun darkThemSwichChanged(navigationView: NavigationView) {
+    private fun darkThemSwitchChanged(navigationView: NavigationView) {
         val menuItem = navigationView.menu.findItem(R.id.miDarkTheme)
         val darkThemeSwitch = menuItem.actionView.findViewById<Switch>(R.id.miDarkThemeSwitch)
         darkThemeSwitch.setOnCheckedChangeListener { _, isChecked ->
